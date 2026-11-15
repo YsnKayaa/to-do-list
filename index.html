@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO APP</title>
+
+<script>
+    (function () {
+      var theme;
+      try { theme = localStorage.getItem('todo-theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1 class="header__title">TO DO LİST</h1>
+
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+      <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+        <path fill="currentColor" d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"/>
+      </svg>
+      <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+        <circle cx="13" cy="13" r="5" fill="currentColor"/>
+        <path stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              d="M13 1.5v3M13 21.5v3M1.5 13h3M21.5 13h3M4.87 4.87l2.12 2.12M19.01 19.01l2.12 2.12M4.87 21.13l2.12-2.12M19.01 6.99l2.12-2.12"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+   <form class="new-todo card" id="new-todo-form">
+    <span class="new-todo__circle" aria-hidden="true"></span>
+  <label class="visually-hidden" for="new-todo">Yeni bir yapılacak iş oluştur</label>
+  <input class="new-todo__input" id="new-todo" type="text"
+    placeholder="Create a new todo…" autocomplete="off" maxlength="120">
+</form>
+<section class="todos card" aria-label="Todo list">
+  <ul class="todo-list" id="todo-list"></ul>
+
+  <div class="todos__footer">
+    <p class="todos__count" id="items-left" aria-live="polite">0 öğe kaldı</p>
+
+    <nav class="filters filters--inline" aria-label="Filter todos">
+      <button class="filters__btn" type="button" data-filter="all">Hepsi</button>
+      <button class="filters__btn" type="button" data-filter="active">Aktif</button>
+      <button class="filters__btn" type="button" data-filter="completed">Başarılı</button>
+    </nav>
+
+    <button class="todos__clear" id="clear-completed" type="button">Tamamlananları Temizle</button>
+  </div>
+</section>
+
+<nav class="filters filters--card card" aria-label="Filter todos">
+  <button class="filters__btn" type="button" data-filter="all">All</button>
+  <button class="filters__btn" type="button" data-filter="active">Active</button>
+  <button class="filters__btn" type="button" data-filter="completed">Completed</button>
+</nav>
+
+<p class="hint">
+  Listeyi yeniden sıralamak için sürükleyip bırakın
+  <span class="visually-hidden">Klavyeyi kullanarak bir yapılacak işe odaklanın ve Alt tuşuyla birlikte yukarı veya aşağı ok tuşuna basın..</span>
+</p>
+  </main>
+<p class="visually-hidden" id="status" role="status"></p>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
