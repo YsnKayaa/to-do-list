@@ -3,12 +3,12 @@
 const MAX_LENGTH = 120;
 
 const DEFAULT_TODOS = [
-  { id: 'd1', text: 'Complete online JavaScript course', completed: true },
-  { id: 'd2', text: 'Jog around the park 3x', completed: false },
-  { id: 'd3', text: '10 minutes meditation', completed: false },
-  { id: 'd4', text: 'Read for 1 hour', completed: false },
-  { id: 'd5', text: 'Pick up groceries', completed: false },
-  { id: 'd6', text: 'Complete Todo App on Frontend Mentor', completed: false },
+  { id: 'd1', text: 'Ödevleri Yap', completed: true },
+  { id: 'd2', text: 'Sporuna Git', completed: false },
+  { id: 'd3', text: 'Raporlar Teslim Edilicek', completed: false },
+  { id: 'd4', text: '15:00 Kalite Toplantısı', completed: false },
+  { id: 'd5', text: '19:00 Şirket Yemeği', completed: false },
+  { id: 'd6', text: 'Ek Geliştirmeleri Tamamla', completed: false },
 ];
 
 function makeId() {
@@ -142,9 +142,9 @@ function saveTodos() {
 const store = createTodoStore(loadTodos());
 let filter = 'all';
 const EMPTY_MESSAGES = {
-  all: 'Your list is empty. Add a todo above.',
-  active: 'No active todos.',
-  completed: 'No completed todos.',
+  all: 'Listeniz boş. Yukarıya bir yapılacak iş ekleyin',
+  active: 'Hepsini etkinleştirme.',
+  completed: 'Tamamlanmış yapılacak iş yok.',
 };
 
 function createTodoElement(todo) {
